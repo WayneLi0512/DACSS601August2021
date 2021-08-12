@@ -1,0 +1,29 @@
+---
+title: "Weigeng Poultry Tidy"
+description: |
+  Weigeng Poultry Tidy Data
+author: WeigengLi
+date: 08-12-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r echo=FALSE}
+library(tidyverse)
+data<- read_csv("../../_data/poultry_tidy.csv")
+
+```
+
+```{r echo=FALSE}
+head(data)
+glimpse(data)
+```
+
+
+
+
+
+
