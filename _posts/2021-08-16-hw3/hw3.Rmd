@@ -1,6 +1,6 @@
 ---
 title: "Homework3: Hotel Booking Dataset "
-description: | This Weigeng's Homework 3
+description: | This Weigeng's Homework 3 A
 author: WeigengLi
 date: 08-16-2021
 output:
@@ -29,7 +29,7 @@ The 2<sup>nd</sup> column "is_canceled" is contained in 31<sup>th</sup> "reserva
 
 ```{r}
 colum2_colum31<- HBD %>% select(is_canceled,reservation_status) %>% slice(121:129)
-head(colum2_colum31)
+head(colum2_colum31)      
 ```
 
 Codes
