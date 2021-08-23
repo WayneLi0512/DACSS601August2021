@@ -1,0 +1,88 @@
+---
+title: "Homework3: Hotel Booking Dataset "
+description: | This Weigeng's Homework 3
+author: WeigengLi
+date: 08-16-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+The data set was about Booking Information of hotels.
+First Let's have a quick glimpse of the data set
+
+
+# read and take a glimpse of data
+
+```{r, echo=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library("tidyverse")
+library(dplyr)
+HBD<-read_csv("../../_data/hotel_bookings.csv")
+head(HBD)
+```
+
+
+I found that some column is no easy to read. So I made some changes.
+The 2<sup>nd</sup> column "is_canceled" is contained in 31<sup>th</sup> "reservation_status". We can combine 2 columns into 1 column State.
+
+```{r}
+colum2_colum31<- HBD %>% select(is_canceled,reservation_status) %>% slice(121:129)
+head(colum2_colum31)
+```
+
+Codes
+
+```{r,echo=TRUE}
+HBD <- HBD %>%
+  mutate( "State" = case_when(
+          is_canceled == 1 & reservation_status == 'Canceled'  ~ "Canceled" ,
+          is_canceled == 0 & reservation_status == 'Check-Out' ~ "Check-Out",
+          is_canceled == 1 & reservation_status == 'No-Show'   ~ "Canceled" ,
+         )
+         )
+colum_State<- HBD %>% select(State)%>% slice(121:129)
+head(colum_State)
+```
+
+After Combination
+
+```{r,echo=FALSE}
+head(colum_State)
+```
+
+Using group_by() and summarise() we can find out that individuals who canceled the order have more leading time. 
+
+```{r}
+HBDState<- HBD %>%
+  group_by(State)
+summarise(HBDState, mean(lead_time))
+
+```
+To compare number of orders in each market segments. I use a bar graph.
+
+```{r}
+HBD3<- HBD%>%
+  select(hotel,country,market_segment,lead_time)
+ggplot(HBD3,aes(hotel,fill=market_segment))+
+  geom_bar()
+
+```
+
+Notice that there was some undefined group use filter to delete it
+
+```{r}
+HBD3<- HBD%>%
+  filter(!str_detect(market_segment,"Undefined"))%>%
+  select(hotel,country,market_segment,lead_time)
+ggplot(HBD3,aes(hotel,fill=market_segment))+
+  geom_bar()
+
+```
+
+
+
+
+
+
