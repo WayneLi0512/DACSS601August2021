@@ -1,6 +1,6 @@
 ---
 title: "Homework3: Hotel Booking Dataset "
-description: | This Weigeng's Homework 3 A
+description: | This Weigeng's Homework 3
 author: WeigengLi
 date: 08-16-2021
 output:
@@ -81,7 +81,7 @@ ggplot(HBD3,aes(hotel,fill=market_segment))+
 
 ```
 
-
+The end.
 
 
 
