@@ -1,0 +1,24 @@
+---
+title: "Weigeng Li: Study of E-commerce - Users of a French C2C fashion store "
+description: |
+  A short description of the post.
+author: WeigengLi
+date: 08-23-2021
+output:
+  distill::distill_article:
+    self_contained: false
+draft: true
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+<p><center>E-commerce - Users of a French C2C fashion store</center></p>
+
+
+
+
+
+
